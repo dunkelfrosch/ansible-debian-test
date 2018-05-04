@@ -10,42 +10,8 @@ env:
     ###
     ### Debian stretch
     ###
-    # All roles (playbook order)
-    - single=0 random=0 dist=debian-stretch
-    # All roles (random order)
-    - single=0 random=1 dist=debian-stretch
-    # Start each role separately
-    - single=1 random=0 dist=debian-stretch
-
-    ###
-    ### Debian testing
-    ###
-    # All roles (playbook order)
-    - single=0 random=0 dist=debian-testing
-    # All roles (random order)
-    - single=0 random=1 dist=debian-testing
-    # Start each role separately
-    - single=1 random=0 dist=debian-testing
-
-    ###
-    ### Cytopia's profile: stretch
-    ###
-    # All roles (playbook order)
-    - single=0 random=0 dist=cytopia-stretch
-    # All roles (random order)
-    - single=0 random=1 dist=cytopia-stretch
-    # Start each role separately
-    - single=1 random=0 dist=cytopia-stretch
-
-    ###
-    ### Cytopia's profile: testing
-    ###
-    # All roles (playbook order)
-    - single=0 random=0 dist=cytopia-testing
-    # All roles (random order)
-    - single=0 random=1 dist=cytopia-testing
-    # Start each role separately
-    - single=1 random=0 dist=cytopia-testing
+    # single problem roles (libreoffice)
+    - single=0 random=0 dist=debian-libreoffice
 
 
 before_script:
