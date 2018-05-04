@@ -52,7 +52,7 @@
 
 - name: ensure libreoffice is downloaded
   unarchive:
-    src: "{{ libreoffice_download_link }}"
+    src: "https:{{ libreoffice_download_link }}"
     dest: "{{ libreoffice_tmp_dir.path }}"
     remote_src: yes
   when: libreoffice_installed.rc == 1
