@@ -1,0 +1,9 @@
+---
+
+clipmenu_bin_path: /usr/local/bin
+
+clipmenu_shared_packages:
+  - rofi
+  # dmenu
+  - suckless-tools
+  - xsel

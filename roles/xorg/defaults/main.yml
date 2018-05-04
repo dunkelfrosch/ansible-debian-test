@@ -1,0 +1,27 @@
+---
+
+# 'install', 'remove' or 'ignore'
+xorg: 'ignore'
+
+
+###
+### xorg gpu
+###
+
+# see vars/main.yml for supported values
+xorg_gpu: modesetting
+
+# see vars/main.yml for supported values
+xorg_gpu_accel_method: glamor
+
+# Enable VDPAU_DRIVER=va_gl systemwide
+xorg_gpu_vdpau_va_gl_enable: yes
+
+
+###
+### xorg touchpad
+###
+
+# 'libinput' or 'synaptics'
+xorg_touchpad_enable: yes
+xorg_touchpad_driver: 'synaptics'

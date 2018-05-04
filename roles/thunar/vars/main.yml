@@ -1,0 +1,52 @@
+---
+
+thunar_package_name:
+  - thunar
+
+# Volman
+thunar_volman_package_name:
+  - thunar-volman
+thunar_volman_shared_packages:
+  - eject
+  # ---- gvfs
+  - gvfs
+  - gvfs-backends
+  - gvfs-bin
+  - gvfs-common
+  - gvfs-daemons
+  - gvfs-fuse
+  - gvfs-libs
+  # ---- Udisk
+  - udisks2
+  # ---- Fuse
+  - fuse
+  - fuse2fs
+  - fuseext2
+  - fusefat
+  - fuseiso
+  - fuseiso9660
+  - fusesmb
+  # ---- Filesystem tools
+  - btrfs-progs
+  - dosfstools
+  - e2fsprogs
+  - exfat-utils
+  - ntfs-3g
+  - reiserfsprogs
+  - udftools
+  - xfsprogs
+  # ---- FS encryption tools
+  - cryptsetup
+  - keyutils
+
+# Archiver Plugin
+thunar_archive_plugin_package_name:
+  - thunar-archive-plugin
+thunar_archive_plugin_shared_packages:
+  - xarchiver
+  - bzip2
+  - p7zip-full
+  - xz-utils
+  - zip
+  - unzip
+  - xdg-utils

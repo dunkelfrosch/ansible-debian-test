@@ -1,0 +1,7 @@
+---
+
+# 'install', 'remove' or 'ignore'
+skype: 'ignore'
+
+# Choose 'stable' or 'unstable' channel
+skype_repo_channel: stable

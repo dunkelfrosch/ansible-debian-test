@@ -1,0 +1,10 @@
+---
+
+chromium_package_name: chromium
+
+chromium_shared_packages:
+  - upower
+  - opus-tools
+  - speex
+
+chromium_extensions_dir: /usr/share/chromium/extensions

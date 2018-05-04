@@ -1,0 +1,276 @@
+---
+
+###
+### Bootstrap System
+###
+- hosts: all
+  roles:
+    - apt-repo-meta
+  tags:
+    - bootstrap-system
+    - bootstrap-system-apt-repo
+
+- hosts: all
+  vars:
+    apt_packages:
+      - apt-utils
+      - ca-certificates
+      - curl
+      - gnupg
+      - software-properties-common
+  roles:
+    - apt-meta
+  tags:
+    - bootstrap-system
+    - bootstrap-system-apt
+
+
+###
+### Pythonstrap System
+###
+- hosts: all
+  roles:
+    - python-meta
+  tags:
+    - bootstrap-python
+
+
+###
+### Install Role Packages
+###
+- hosts: all
+  roles: [autorunner]
+  tags: autorunner
+
+- hosts: all
+  roles: [chromium]
+  tags: chromium
+
+- hosts: all
+  roles: [clipmenu]
+  tags: clipmenu
+
+- hosts: all
+  roles: [dbeaver]
+  tags: dbeaver
+
+- hosts: all
+  roles: [diff-highlight]
+  tags: diff-highlight
+
+- hosts: all
+  roles: [docker]
+  tags: docker
+
+- hosts: all
+  roles: [docker-compose]
+  tags: docker-compose
+
+- hosts: all
+  roles: [ffscreencast]
+  tags: ffscreencast
+
+- hosts: all
+  roles: [firefox]
+  tags: firefox
+
+- hosts: all
+  roles: [hipchat]
+  tags: hipchat
+
+- hosts: all
+  roles: [fzf]
+  tags: fzf
+
+- hosts: all
+  roles: [gimp]
+  tags: gimp
+
+- hosts: all
+  roles: [i3-utils-bin]
+  tags: i3-utils-bin
+
+- hosts: all
+  roles: [i3-gaps]
+  tags: i3-gaps
+
+- hosts: all
+  roles: [i3-utils-systemd]
+  tags: i3-utils-systemd
+
+- hosts: all
+  roles: [i3blocks-modules]
+  tags: i3blocks-modules
+
+- hosts: all
+  roles: [libreoffice]
+  tags: libreoffice
+
+- hosts: all
+  roles: [lxdm]
+  tags: lxdm
+
+- hosts: all
+  roles: [neovim]
+  tags: neovim
+
+- hosts: all
+  roles: [network-manager]
+  tags: network-manager
+
+- hosts: all
+  roles: [oh-my-zsh]
+  tags: oh-my-zsh
+
+- hosts: all
+  roles: [packer]
+  tags: packer
+
+- hosts: all
+  roles: [pinta]
+  tags: pinta
+
+- hosts: all
+  roles: [ranger]
+  tags: ranger
+
+- hosts: all
+  roles: [skype]
+  tags: skype
+
+- hosts: all
+  roles: [sublime]
+  tags: sublime
+
+- hosts: all
+  roles: [sxiv]
+  tags: sxiv
+
+- hosts: all
+  roles: [telegram]
+  tags: telegram
+
+- hosts: all
+  roles: [thunar]
+  tags: thunar
+
+- hosts: all
+  roles: [thunar-custom-actions]
+  tags: thunar-custom-actions
+
+- hosts: all
+  roles: [thunderbird]
+  tags: thunderbird
+
+- hosts: all
+  roles: [timemachine]
+  tags: timemachine
+
+- hosts: all
+  roles: [urxvt]
+  tags: urxvt
+
+- hosts: all
+  roles: [virtualbox]
+  tags: virtualbox
+
+- hosts: all
+  roles: [xbacklight]
+  tags: xbacklight
+
+- hosts: all
+  roles: [xorg]
+  tags: xorg
+
+- hosts: all
+  roles: [zathura]
+  tags: zathura
+
+
+###
+### Install fonts
+###
+- hosts: all
+  roles: [font-droid-sans-mono]
+  tags:
+    - font-droid-sans-mono
+    - font
+    - fonts
+
+- hosts: all
+  roles: [font-font-awesome]
+  tags:
+    - font-font-awesome
+    - font
+    - fonts
+
+- hosts: all
+  roles: [font-san-francisco]
+  tags:
+    - font-san-francisco
+    - font
+    - fonts
+
+- hosts: all
+  roles: [font-terminus]
+  tags:
+    - font-terminus
+    - font
+    - fonts
+
+- hosts: all
+  roles: [font-ubuntu]
+  tags:
+    - font-ubuntu
+    - font
+    - fonts
+
+
+###
+### Install themes/icons
+###
+- hosts: all
+  roles: [icon-moka]
+  tags:
+    - icon-moka
+    - icon
+    - icons
+
+- hosts: all
+  roles: [theme-arc]
+  tags:
+    - theme-arc
+    - theme
+    - themes
+
+
+###
+### Install Custom apt Packages
+###
+- hosts: all
+  roles:
+    - apt-meta
+  tags:
+    - apt
+
+
+###
+### Set default applications
+###
+- hosts: all
+  roles:
+    - xdg-mime-meta
+  tags:
+    - xdg
+    - xdg-open
+    - xdg-mime
+
+
+###
+### Manager systemd services
+###
+- hosts: all
+  roles:
+    - systemd-meta
+  tags:
+    - systemd

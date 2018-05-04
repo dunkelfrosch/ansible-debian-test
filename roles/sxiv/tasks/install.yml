@@ -1,0 +1,47 @@
+---
+
+- name: ensure sxiv packages are installed
+  include_role:
+    name: apt-meta
+  vars:
+    apt_packages:
+      - "{{ sxiv_package_name }}"
+      - "{{ sxiv_shared_packages }}"
+
+- name: ensure sxiv wrapper is downloaded
+  get_url:
+    url: https://raw.githubusercontent.com/cytopia/i3-utils-bin/master/bin/ximage
+    dest: "/usr/local/bin/{{ sxiv_wrapper_name }}"
+    mode: 0755
+    force: yes
+    timeout: 30
+  register: task_result
+  until: task_result | succeeded
+  retries: 10
+  delay: 5
+  become: yes
+
+- name: ensure applications directory exist
+  file:
+    state: directory
+    path: /usr/share/applications
+    mode: 0755
+    owner: root
+    group: root
+  become: yes
+
+- name: ensure sxiv desktop file is present
+  template:
+    src: usr/share/applications/sxiv.desktop.j2
+    dest: /usr/share/applications/sxiv.desktop
+    mode: 0644
+  become: yes
+
+- name: ensure sxiv default mime types are set
+  include_role:
+    name: xdg-mime-meta
+  vars:
+    xdg_mime_defaults:
+      - desktop_file: sxiv.desktop
+        mime_types: "{{ sxiv_default_mime_types }}"
+  when: sxiv_default_image_viewer

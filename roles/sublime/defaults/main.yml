@@ -1,0 +1,7 @@
+---
+
+# 'install', 'remove' or 'ignore'
+sublime: 'ignore'
+
+# Choose 'stable' or 'dev' channel
+sublime_repo_channel: stable

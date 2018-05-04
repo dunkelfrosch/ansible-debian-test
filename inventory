@@ -1,0 +1,53 @@
+#
+# Inventory file
+#
+# Customize:
+# ----------
+# 1. Copy host_vars/debian_<dist>.yml to host_vars/<name>.yml
+# 2. Customize host_vars/<name>.yml
+# 3. Add your <name> to an existing or new group to this 'inventory' file.
+# 4. Run the following for your specific profile:
+#
+# ansible-playbook -i inventory playbook.yml --diff --limit <name> --ask-become-pass
+
+
+###
+### Default example
+###
+### * Every package enabled
+### * No contrib; No non-free repository
+### * No custom packages
+###
+[debian]
+# $ ansible-playbook -i inventory playbook.yml --diff --limit debian-stretch --ask-become-pass
+# $ ansible-playbook -i inventory playbook.yml --diff --limit debian-testing --ask-become-pass
+debian-stretch ansible_connection=local
+debian-testing ansible_connection=local
+
+
+###
+### Cytopia's profile
+###
+[cytopia]
+# $ ansible-playbook -i inventory playbook.yml --diff --limit cytopia-stretch --ask-become-pass
+# $ ansible-playbook -i inventory playbook.yml --diff --limit cytopia-testing --ask-become-pass
+cytopia-stretch ansible_connection=local
+cytopia-testing ansible_connection=local
+
+
+###
+### Example for customization:
+###
+#
+# Groupname: john
+# Hostname:  johns-machine
+#
+# 1. Copy host_vars/debian_<dist>.yml to host_vars/johns-machine.yml
+# 2. Customize host_vars/johns-machine.yml
+# 3. Uncomment the two lines below to add yourself to the inventory
+# 4. Run the following for your specific profile:
+#
+# ansible-playbook -i inventory playbook.yml --diff --limit johns-machine --ask-become-pass
+
+#[john]
+# johns-machine ansible_connection=local

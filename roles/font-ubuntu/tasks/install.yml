@@ -1,0 +1,55 @@
+---
+
+- name: ensure requirements are installed
+  include_role:
+    name: apt-meta
+  vars:
+    apt_packages:
+      - unzip
+
+- name: fetch ubuntu font info
+  uri:
+    url: https://design.ubuntu.com/font/
+    method: GET
+    follow_redirects: yes
+    return_content: yes
+  register: font_ubuntu_raw
+  check_mode: no
+
+- name: set ubuntu font url
+  set_fact:
+    font_ubuntu_zip: "{{ font_ubuntu_raw.content | regex_search(qry) }}"
+  vars:
+    qry: 'https://assets.ubuntu.com/.*-ubuntu-font-family-[.0-9]+\.zip'
+  check_mode: no
+
+- name: ensure font directory exists
+  file:
+    path: "{{ font_ubuntu_font_path }}"
+    state: directory
+    mode: 0755
+  notify: update font-cache
+
+# Unarchive module seems buggy:
+# When directory already exists user cannot
+# chown group, even if it is his own, therefore run as root.
+- name: get current user
+  shell: "whoami"
+  register: font_ubuntu_user
+  check_mode: no
+  changed_when: False
+- name: get current user group
+  shell: "getent group {{ font_ubuntu_user.stdout }} | awk -F ':' '{print $1}'"
+  register: font_ubuntu_group
+  check_mode: no
+  changed_when: False
+- name: ensure ubuntu font is downloaded
+  unarchive:
+    src: "{{ font_ubuntu_zip }}"
+    dest: "{{ font_ubuntu_font_path }}"
+    remote_src: yes
+    owner: "{{ font_ubuntu_user.stdout }}"
+    group: "{{ font_ubuntu_group.stdout }}"
+    #mode: 0755
+  become: yes
+  notify: update font-cache

@@ -1,0 +1,21 @@
+---
+
+- name: ensure users xdg mime directory exists
+  file:
+    state: directory
+    path: "{{ xdg_mime_config_dir }}"
+    mode: 0700
+
+- name: ensure xdg utilities are installed
+  include_role:
+    name: apt-meta
+  vars:
+    apt_packages:
+      - xdg-utils
+
+- name: ensure xdg mime default application is set
+  command: "xdg-mime default {{ item[0].desktop_file }} {{ item[1] }}"
+  changed_when: False
+  with_subelements:
+    - "{{ xdg_mime_defaults }}"
+    - mime_types

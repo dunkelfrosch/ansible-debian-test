@@ -1,0 +1,33 @@
+---
+
+- name: ensure urxvt is installed
+  include_role:
+    name: apt-meta
+  vars:
+    apt_packages:
+      - "{{ urxvt_package_name }}"
+      - "{{ urxvt_shared_packages }}"
+
+- name: ensure urxvt extensions directory is present
+  file:
+    state: directory
+    path: "{{ urxvt_extensions_path }}"
+    mode: 0755
+    owner: root
+    group: root
+  become: yes
+
+- name: ensure urxvt extensions are downloaded
+  get_url:
+    url: "{{ item }}"
+    dest: "{{ urxvt_extensions_path }}/{{ item | basename }}"
+    mode: 0755
+    force: yes
+    timeout: 30
+  register: task_result
+  until: task_result | succeeded
+  retries: 10
+  delay: 5
+  become: yes
+  with_items:
+    - "{{ urxvt_extensions }}"

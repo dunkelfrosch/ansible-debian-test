@@ -1,0 +1,8 @@
+---
+
+sxiv_package_name: sxiv
+sxiv_shared_packages:
+  - exiv2
+  - imagemagick
+
+sxiv_wrapper_name: sxiv-wrapper.sh

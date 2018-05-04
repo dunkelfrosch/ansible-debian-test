@@ -1,0 +1,20 @@
+---
+
+# State is present by default
+apt_repo_state: present
+
+# Array of repositories to add by default
+apt_repo_repositories:
+  - file: debian-main
+    repo: deb http://deb.debian.org/debian stretch main
+  - file: debian-updates
+    repo: deb http://deb.debian.org/debian stretch-updates main
+  - file: debian-security
+    repo: deb http://security.debian.org stretch/updates main
+
+# Array of apt keys to add (all are optional)
+apt_repo_keys: []
+# - url:
+#   keyserver:
+#   id:
+#   file:
