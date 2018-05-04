@@ -23,7 +23,7 @@
 # $ ansible-playbook -i inventory playbook.yml --diff --limit debian-testing --ask-become-pass
 debian-stretch ansible_connection=local
 debian-testing ansible_connection=local
-
+debian-libreoffice ansible_connection=local
 
 ###
 ### Cytopia's profile
@@ -33,7 +33,6 @@ debian-testing ansible_connection=local
 # $ ansible-playbook -i inventory playbook.yml --diff --limit cytopia-testing --ask-become-pass
 cytopia-stretch ansible_connection=local
 cytopia-testing ansible_connection=local
-
 
 ###
 ### Example for customization:
