@@ -42,9 +42,10 @@
   check_mode: no
   when: libreoffice_installed.rc == 1
 
-- name: extract libreoffice download link
+- name: extract libreoffice base download link
   set_fact:
-    libreoffice_download_link: "{{ libreoffice_mirror_page_raw.content | regex_search(qry) }}"
+    libreoffice_download_link_base: "{{ libreoffice_mirror_page_raw.content | regex_search(qry) }}"
+    libreoffice_download_link_final: "https:{{ libreoffice_base_download_link }}"
   vars:
     qry: '//download.documentfoundation.org/libreoffice/.*/[.0-9]+/deb/x86_64/LibreOffice_[.0-9]+_Linux_x86-64_deb.tar.gz'
   check_mode: no
@@ -52,7 +53,7 @@
 
 - name: ensure libreoffice is downloaded
   unarchive:
-    src: "https:{{ libreoffice_download_link }}"
+    src: "{{ libreoffice_download_link_final }}"
     dest: "{{ libreoffice_tmp_dir.path }}"
     remote_src: yes
   when: libreoffice_installed.rc == 1
