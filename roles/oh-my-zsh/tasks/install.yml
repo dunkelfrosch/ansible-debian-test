@@ -16,7 +16,7 @@
 
 - name: deploy .zshrc
   template: src=../files/zshrc.in dest=/root/conf/zshrc owner=root
-  become: yes
+c
 
 - name: remove standard zshrc
   file: path=/root/.zshrc state=absent
