@@ -1,7 +1,7 @@
 sudo: required
 
 env:
-  - DOCKER_CMD_PRIV_OPT="--privileged --cap-add=ALL -v /tmp:/tmp -v /dev:/dev -v /lib/modules:/lib/modules -v /sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - DOCKER_CMD_PRIV_OPT="--privileged --cap-add=ALL -v /tmp:/tmp -v /sys/fs/cgroup:/sys/fs/cgroup:ro"
 
 language: python
 
