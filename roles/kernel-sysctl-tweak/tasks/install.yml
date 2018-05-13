@@ -5,7 +5,7 @@
 # ---------------------------------------------------------------------------------------------------------------------
 
 - set_fact:
-    travis_running: "{{ lookup('env','TRAVIS') }}"
+    travis_running: "{{ lookup('env','TRAVIS') | bool }}"
 
 - shell: echo "I've travis running ('{{ travis_running }}') and am not afraid to use it!"
   when: travis_running is defined
