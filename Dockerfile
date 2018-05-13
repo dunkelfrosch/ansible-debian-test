@@ -11,6 +11,7 @@ RUN set -x \
 		python-pip \
 		python-setuptools \
 		sudo \
+		kmod \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& apt-get purge -y --autoremove
 
