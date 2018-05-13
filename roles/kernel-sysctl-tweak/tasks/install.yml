@@ -4,8 +4,11 @@
 # INJECT REQUIRED KERNEL MODULES
 # ---------------------------------------------------------------------------------------------------------------------
 
+- debug: msg="{{ lookup('env','TRAVIS') }} is an environment variable"
+- debug: msg="{{ lookup('env','TRAVIS') | default('false', true) }} is the converted environment variable"
+
 - set_fact:
-    force_sysctl_reload: "{{ lookup('env','FORCE_SYSCTL_RELOAD') | bool }}"
+    force_sysctl_reload: "{{ lookup('env', 'TRAVIS') | default('false', true) }}"
 
 - shell: echo "I've travis running ('{{ force_sysctl_reload }}') and am not afraid to use it!"
   when: force_sysctl_reload is defined
