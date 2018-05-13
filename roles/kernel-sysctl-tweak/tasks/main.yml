@@ -2,6 +2,10 @@
 
 - include_tasks: install.yml
   when: kernel_sysctl_tweak == 'install'
+  become: true
+  become_user: root
 
 - include_tasks: uninstall.yml
   when: kernel_sysctl_tweak == 'remove'
+  become: true
+  become_user: root
