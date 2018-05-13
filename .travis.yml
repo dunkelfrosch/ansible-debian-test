@@ -29,7 +29,7 @@ script:
         for r in ${ROLES}; do
             printf "========== Run %s / %s (%s) ==========\n" "${START}" "${TOTAL}" "${r}";
             max=10; i=0; while [ $i -lt $max ]; do
-                if docker run ${DOCKER_CMD_EXT_OPT} -e verbose=3 -e MY_HOST=${dist} -e tag=${r} -t ansible-debian; then
+                if docker run ${DOCKER_CMD_EXT_OPT} -e verbose=3 -e MY_HOST=${dist} -e tag=${r} -t ansible-debian ; then
                     break;
                 else
                     i=$((i+1));
@@ -39,8 +39,7 @@ script:
             START=$((START+1));
         done;
     else
-        docker run ${DOCKER_CMD_EXT_OPT} -e verbose=3 -e MY_HOST=${dist} -e random=${random} -t ansible-debian;
+        docker run ${DOCKER_CMD_EXT_OPT} -e verbose=3 -e MY_HOST=${dist} -e random=${random} -t ansible-debian ;
     fi
-
-  - docker system prune -f
+ - docker system prune -f
 
