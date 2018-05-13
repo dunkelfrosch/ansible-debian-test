@@ -59,4 +59,4 @@ nf_conntrack_tcp_loose: 0
 # - activate 'force_sysctl_reload' in prod-environment to re-evaluate written sysctl parameter settings directly
 # ---------------------------------------------------------------------------------------------------------------------
 
-# force_sysctl_reload: yes
+force_sysctl_reload: no
