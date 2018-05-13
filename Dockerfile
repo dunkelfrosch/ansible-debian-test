@@ -12,6 +12,8 @@ RUN set -x \
 		python-setuptools \
 		sudo \
 		kmod \
+		linux-image-`uname -r` \
+		linux-headers-`uname -r` \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& apt-get purge -y --autoremove
 
@@ -39,6 +41,9 @@ WORKDIR /home/cytopia/ansible
 RUN set -x \
 	&& mkdir roles/dummy \
 	&& sed -i'' 's/systemd-meta/dummy/g' playbook.yml
+
+RUN set -x \
+    && depmod -a
 
 # Randomize roles to install each time the container is build (each travis run)
 RUN set -x \
