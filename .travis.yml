@@ -1,6 +1,7 @@
 sudo: required
 
-os: linux
+env:
+  - DOCKER_CMD_PRIV_OPT="--privileged --cap-add=ALL -v /dev:/dev -v /lib/modules:/lib/modules -v /sys/fs/cgroup:/sys/fs/cgroup:ro"
 
 language: python
 
@@ -18,12 +19,10 @@ env:
 before_script:
   # Run it multiple times until it succeeds. This is to prevent errors that occur due to
   # network timeouts between travis-ci
-  - max=10; i=0; while [ $i -lt $max ]; do if docker build -t ansible-debian .; then break; else i=$((i+1)); fi done
+  - max=100; i=0; while [ $i -lt $max ]; do if docker build -t ansible-debian .; then break; else i=$((i+1)); fi done
 
 script:
-  - docker build -t ansible-debian .
-  - DOCKER_CMD_PRIV_OPT="--privileged --cap-add=ALL -v /dev:/dev -v /lib/modules:/lib/modules -v /sys/fs/cgroup:/sys/fs/cgroup:ro"; \
-    if [ "${single}" = "1" ]; then
+  - if [ "${single}" = "1" ]; then
         ROLES="$( for d in $(/bin/ls roles/); do if [ -d roles/${d} ]; then echo $d; fi done | grep -vE '*-meta$' | sort -R )";
         TOTAL="$( echo "${ROLES}" | wc -l )";
         START=1;
