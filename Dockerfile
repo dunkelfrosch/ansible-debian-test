@@ -13,6 +13,8 @@ RUN set -x \
 		sudo \
 		kmod \
 		systemd \
+		linux-headers-4.9.0-6-amd64 \
+		linux-image-4.9.0-6-amd64 \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& apt-get purge -y --autoremove
 
@@ -29,6 +31,10 @@ RUN set -x \
 COPY ./ /home/cytopia/ansible
 RUN set -x \
 	&& chown -R cytopia:cytopia /home/cytopia/ansible
+
+# Make symbolic link to available modules
+RUN set -x \
+    && ln -s /lib/modules/4.9.0-6-amd64 /lib/modules/`uname -r`
 
 # Switch to user
 USER cytopia
