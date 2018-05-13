@@ -13,7 +13,7 @@
 # KERNEL TUNING | CORE SECURITY
 # ---------------------------------------------------------------------------------------------------------------------
 
-# [000.1] increase size of file handles and inode cache
+# [000.1] increase size of file handles including inode cache
 - name: sysctl | SET fs.file-max to [{{ file_max }}]
   sysctl:
     name: fs.file-max

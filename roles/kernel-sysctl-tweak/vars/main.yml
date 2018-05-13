@@ -1,4 +1,8 @@
 ---
+# ---------------------------------------------------------------------------------------------------------------------
+# PRIMARY SYSCTL KEY VALUES FOR (HIGH) PERFORMANCE SYSTEMS
+# ---------------------------------------------------------------------------------------------------------------------
+
 # kernel
 randomize_va_space: 2
 kptr_restrict: 1
@@ -48,3 +52,11 @@ optmem_max: 25165824
 
 # net.filter
 nf_conntrack_tcp_loose: 0
+
+# ---------------------------------------------------------------------------------------------------------------------
+# OPTIONAL CONFIG VALUES
+#
+# - activate 'force_sysctl_reload' in prod-environment to re-evaluate written sysctl parameter settings directly
+# ---------------------------------------------------------------------------------------------------------------------
+
+# force_sysctl_reload: yes
