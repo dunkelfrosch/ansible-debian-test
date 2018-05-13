@@ -5,6 +5,7 @@
 # ---------------------------------------------------------------------------------------------------------------------
 
 - name: modprobe | remove ip_conntrack kernel module
+  become: true
   modprobe:
     name: ip_conntrack
     state: absent
