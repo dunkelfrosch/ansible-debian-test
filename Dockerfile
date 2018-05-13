@@ -13,7 +13,6 @@ RUN set -x \
 		sudo \
 		kmod \
 		systemd \
-		linux-headers-4.9.0-6-amd64 \
 		linux-image-4.9.0-6-amd64 \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& apt-get purge -y --autoremove
