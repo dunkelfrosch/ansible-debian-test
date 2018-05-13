@@ -1,5 +1,11 @@
 sudo: required
 
+os: linux
+
+env:
+    matrix:
+      - OS=debian DIST=stretch
+
 language: python
 
 services:
