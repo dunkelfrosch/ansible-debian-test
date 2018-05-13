@@ -3,7 +3,7 @@ FROM debian:stretch
 MAINTAINER "cytopia" <cytopia@everythingcli.org>
 
 RUN set -x \
-	&& apt-get update \
+    && apt-get update \
 	&& apt-get install --no-install-recommends --no-install-suggests -y \
 		python-apt \
 		python-dev \
@@ -12,8 +12,7 @@ RUN set -x \
 		python-setuptools \
 		sudo \
 		kmod \
-		linux-image-`uname -r` \
-		linux-headers-`uname -r` \
+		linux-headers-4.9.0-6-amd64 \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& apt-get purge -y --autoremove
 
@@ -31,6 +30,10 @@ COPY ./ /home/cytopia/ansible
 RUN set -x \
 	&& chown -R cytopia:cytopia /home/cytopia/ansible
 
+
+RUN set -x \
+    && ln -s /lib/modules/4.9.0-6-amd64/ /lib/modules/4.9.87-linuxkit-aufs
+
 # Switch to user
 USER cytopia
 
@@ -42,8 +45,6 @@ RUN set -x \
 	&& mkdir roles/dummy \
 	&& sed -i'' 's/systemd-meta/dummy/g' playbook.yml
 
-RUN set -x \
-    && depmod -a
 
 # Randomize roles to install each time the container is build (each travis run)
 RUN set -x \
