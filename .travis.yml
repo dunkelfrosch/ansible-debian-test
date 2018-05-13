@@ -1,7 +1,7 @@
 sudo: required
 
 env:
-  - DOCKER_CMD_PRIV_OPT="--privileged --cap-add=ALL -v /tmp:/tmp -v /sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - DOCKER_CMD_OPT="--rm --privileged --cap-add=ALL -v /tmp:/tmp -v /sys/fs/cgroup:/sys/fs/cgroup:ro -t ansible-debian"
 
 language: python
 
@@ -29,7 +29,7 @@ script:
         for r in ${ROLES}; do
             printf "========== Run %s / %s (%s) ==========\n" "${START}" "${TOTAL}" "${r}";
             max=10; i=0; while [ $i -lt $max ]; do
-                if docker run --rm ${DOCKER_CMD_PRIV_OPT} -e FORCE_SYSCTL_RELOAD=false -e verbose=3 -e MY_HOST=${dist} -e tag=${r} -t ansible-debian; then
+                if docker run ${DOCKER_CMD_OPT} -e MY_HOST=${dist} -e tag=${r} ; then
                     break;
                 else
                     i=$((i+1));
@@ -39,8 +39,7 @@ script:
             START=$((START+1));
         done;
     else
-        docker run --rm ${DOCKER_CMD_PRIV_OPT} -e verbose=3 -e FORCE_SYSCTL_RELOAD=false -e MY_HOST=${dist} -e random=${random} -t ansible-debian;
+        docker run ${DOCKER_CMD_OPT} -e MY_HOST=${dist} -e random=${random} ;
     fi
 
   - docker system prune -f
-

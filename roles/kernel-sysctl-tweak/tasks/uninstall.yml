@@ -17,126 +17,147 @@
   become: true
   sysctl:
     name: fs.file-max
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET vm.swappiness
   become: true
   sysctl:
     name: vm.swappiness
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET vm.dirty_ratio
   become: true
   sysctl:
     name: vm.dirty_ratio
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET vm.dirty_background_ratio
   become: true
   sysctl:
     name: vm.dirty_background_ratio
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET vm.mmap_min_addr
   become: true
   sysctl:
     name: vm.mmap_min_addr
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET kernel.sched_migration_cost_ns
   become: true
   sysctl:
     name: kernel.sched_migration_cost_ns
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET kernel.randomize_va_space
   become: true
   sysctl:
     name: kernel.randomize_va_space
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET kernel.kptr_restrict
   become: true
   sysctl:
     name: kernel.kptr_restrict
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET kernel.dmesg_restrict
   become: true
   sysctl:
     name: kernel.dmesg_restrict
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET kernel.yama.ptrace_scope
   become: true
   sysctl:
     name: kernel.yama.ptrace_scope
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.tcp_synack_retries
   become: true
   sysctl:
     name: net.ipv4.tcp_synack_retries
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.tcp_syn_retries
   become: true
   sysctl:
     name: net.ipv4.tcp_syn_retries
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.ip_local_port_range
   become: true
   sysctl:
     name: net.ipv4.ip_local_port_range
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.tcp_rfc1337
   become: true
   sysctl:
     name: net.ipv4.tcp_rfc1337
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.tcp_syncookies
   become: true
   sysctl:
     name: net.ipv4.tcp_syncookies
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.tcp_fin_timeout
   become: true
   sysctl:
     name: net.ipv4.tcp_fin_timeout
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.tcp_keepalive_time
   become: true
   sysctl:
     name: net.ipv4.tcp_keepalive_time
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.tcp_keepalive_probes
   become: true
   sysctl:
     name: net.ipv4.tcp_keepalive_probes
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.tcp_keepalive_intvl
   become: true
   sysctl:
     name: net.ipv4.tcp_keepalive_intvl
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.netfilter.nf_conntrack_tcp_loose
   become: true
   sysctl:
     name: net.netfilter.nf_conntrack_tcp_loose
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.tcp_max_orphans
   become: true
   sysctl:
     name: net.ipv4.tcp_max_orphans
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -147,100 +168,117 @@
   become: true
   sysctl:
     name: net.core.rmem_default
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.core.rmem_max
   become: true
   sysctl:
     name: net.core.rmem_max
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.core.wmem_default
   become: true
   sysctl:
     name: net.core.wmem_default
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.core.wmem_max
   become: true
   sysctl:
     name: net.core.wmem_max
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.core.somaxconn
   become: true
   sysctl:
     name: net.core.somaxconn
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.core.netdev_max_backlog
   become: true
   sysctl:
     name: net.core.netdev_max_backlog
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.tcp_max_syn_backlog
   become: true
   sysctl:
     name: net.ipv4.tcp_max_syn_backlog
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.core.optmem_max
   become: true
   sysctl:
     name: net.core.optmem_max
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.tcp_mem
   become: true
   sysctl:
     name: net.ipv4.tcp_mem
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.udp_mem
   become: true
   sysctl:
     name: net.ipv4.udp_mem
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.tcp_rmem
   become: true
   sysctl:
     name: net.ipv4.tcp_rmem
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.udp_rmem_min
   become: true
   sysctl:
     name: net.ipv4.udp_rmem_min
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.tcp_wmem
   become: true
   sysctl:
     name: net.ipv4.tcp_wmem
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.udp_wmem_min
   become: true
   sysctl:
     name: net.ipv4.udp_wmem_min
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.tcp_max_tw_buckets
   become: true
   sysctl:
     name: net.ipv4.tcp_max_tw_buckets
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.tcp_tw_recycle
   become: true
   sysctl:
     name: net.ipv4.tcp_tw_recycle
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
 
 - name: sysctl | CLEAR/RESET net.ipv4.tcp_tw_reuse
   become: true
   sysctl:
     name: net.ipv4.tcp_tw_reuse
+    reload: "{{ force_sysctl_reload | default('no') }}"
     state: absent
