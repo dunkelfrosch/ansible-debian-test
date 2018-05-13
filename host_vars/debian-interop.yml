@@ -63,7 +63,9 @@ apt_packages: []
 ### 'remove':  Uninstall the package
 ### Any other value will ignore the package (neither install nor uninstall)
 
-libreoffice:           'install'
+kernel_sysctl_tweak:   'install'
+oh_my_zsh:             'ignore'
+libreoffice:           'ignore'
 autorunner:            'ignore'
 chromium:              'ignore'
 clipmenu:              'ignore'

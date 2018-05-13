@@ -103,6 +103,10 @@
   tags: i3blocks-modules
 
 - hosts: all
+  roles: [kernel-sysctl-tweak]
+  tags: kernel-sysctl-tweak
+
+- hosts: all
   roles: [libreoffice]
   tags: libreoffice
 

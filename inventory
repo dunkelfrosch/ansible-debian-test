@@ -23,7 +23,7 @@
 # $ ansible-playbook -i inventory playbook.yml --diff --limit debian-testing --ask-become-pass
 debian-stretch ansible_connection=local
 debian-testing ansible_connection=local
-debian-libreoffice ansible_connection=local
+debian-interop ansible_connection=local
 
 ###
 ### Cytopia's profile

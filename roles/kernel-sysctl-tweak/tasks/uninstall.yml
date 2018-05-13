@@ -1,0 +1,208 @@
+---
+
+# ---------------------------------------------------------------------------------------------------------------------
+# REMOVE OBSOLETE KERNEL MODULES
+# ---------------------------------------------------------------------------------------------------------------------
+
+- name: modprobe | add ip_conntrack kernel module
+  modprobe:
+    name: ip_conntrack
+    state: absent
+
+# ---------------------------------------------------------------------------------------------------------------------
+# REMOVE KERNEL TUNING | CORE SECURITY OPTIONS
+# ---------------------------------------------------------------------------------------------------------------------
+
+- name: sysctl | SET fs.file-max
+  sysctl:
+    name: fs.file-max
+    state: absent
+
+- name: sysctl | SET vm.swappiness
+  sysctl:
+    name: vm.swappiness
+    state: absent
+
+- name: sysctl | SET vm.dirty_ratio
+  sysctl:
+    name: vm.dirty_ratio
+    state: absent
+
+- name: sysctl | SET vm.dirty_background_ratio
+  sysctl:
+    name: vm.dirty_background_ratio
+    state: absent
+
+- name: sysctl | SET vm.mmap_min_addr
+  sysctl:
+    name: vm.mmap_min_addr
+    state: absent
+
+- name: sysctl | SET kernel.sched_migration_cost_ns
+  sysctl:
+    name: kernel.sched_migration_cost_ns
+    state: absent
+
+- name: sysctl | SET kernel.randomize_va_space
+  sysctl:
+    name: kernel.randomize_va_space
+    state: absent
+
+- name: sysctl | SET kernel.kptr_restrict
+  sysctl:
+    name: kernel.kptr_restrict
+    state: absent
+
+- name: sysctl | SET kernel.dmesg_restrict
+  sysctl:
+    name: kernel.dmesg_restrict
+    state: absent
+
+- name: sysctl | SET kernel.yama.ptrace_scope
+  sysctl:
+    name: kernel.yama.ptrace_scope
+    state: absent
+
+- name: sysctl | SET net.ipv4.tcp_synack_retries
+  sysctl:
+    name: net.ipv4.tcp_synack_retries
+    state: absent
+
+- name: sysctl | SET net.ipv4.tcp_syn_retries
+  sysctl:
+    name: net.ipv4.tcp_syn_retries
+    state: absent
+
+- name: sysctl | SET net.ipv4.ip_local_port_range
+  sysctl:
+    name: net.ipv4.ip_local_port_range
+    state: absent
+
+- name: sysctl | SET net.ipv4.tcp_rfc1337
+  sysctl:
+    name: net.ipv4.tcp_rfc1337
+    state: absent
+
+- name: sysctl | SET net.ipv4.tcp_syncookies
+  sysctl:
+    name: net.ipv4.tcp_syncookies
+    state: absent
+
+- name: sysctl | SET net.ipv4.tcp_fin_timeout
+  sysctl:
+    name: net.ipv4.tcp_fin_timeout
+    state: absent
+
+- name: sysctl | SET net.ipv4.tcp_keepalive_time
+  sysctl:
+    name: net.ipv4.tcp_keepalive_time
+    state: absent
+
+- name: sysctl | SET net.ipv4.tcp_keepalive_probes
+  sysctl:
+    name: net.ipv4.tcp_keepalive_probes
+    state: absent
+
+- name: sysctl | SET net.ipv4.tcp_keepalive_intvl
+  sysctl:
+    name: net.ipv4.tcp_keepalive_intvl
+    state: absent
+
+- name: sysctl | SET net.netfilter.nf_conntrack_tcp_loose
+  sysctl:
+    name: net.netfilter.nf_conntrack_tcp_loose
+    state: absent
+
+- name: sysctl | SET net.ipv4.tcp_max_orphans
+  sysctl:
+    name: net.ipv4.tcp_max_orphans
+    state: absent
+
+# ---------------------------------------------------------------------------------------------------------------------
+# REMOVE GENERAL NETWORK TUNING OPTIONS
+# ---------------------------------------------------------------------------------------------------------------------
+
+- name: sysctl | SET net.core.rmem_default
+  sysctl:
+    name: net.core.rmem_default
+    state: absent
+
+- name: sysctl | SET net.core.rmem_max
+  sysctl:
+    name: net.core.rmem_max
+    state: absent
+
+- name: sysctl | SET net.core.wmem_default
+  sysctl:
+    name: net.core.wmem_default
+    state: absent
+
+- name: sysctl | SET net.core.wmem_max
+  sysctl:
+    name: net.core.wmem_max
+    state: absent
+
+- name: sysctl | SET net.core.somaxconn
+  sysctl:
+    name: net.core.somaxconn
+    state: absent
+
+- name: sysctl | SET net.core.netdev_max_backlog
+  sysctl:
+    name: net.core.netdev_max_backlog
+    state: absent
+
+- name: sysctl | SET net.ipv4.tcp_max_syn_backlog
+  sysctl:
+    name: net.ipv4.tcp_max_syn_backlog
+    state: absent
+
+- name: sysctl | SET net.core.optmem_max
+  sysctl:
+    name: net.core.optmem_max
+    state: absent
+
+- name: sysctl | SET net.ipv4.tcp_mem
+  sysctl:
+    name: net.ipv4.tcp_mem
+    state: absent
+
+- name: sysctl | SET net.ipv4.udp_mem
+  sysctl:
+    name: net.ipv4.udp_mem
+    state: absent
+
+- name: sysctl | SET net.ipv4.tcp_rmem
+  sysctl:
+    name: net.ipv4.tcp_rmem
+    state: absent
+
+- name: sysctl | SET net.ipv4.udp_rmem_min
+  sysctl:
+    name: net.ipv4.udp_rmem_min
+    state: absent
+
+- name: sysctl | SET net.ipv4.tcp_wmem
+  sysctl:
+    name: net.ipv4.tcp_wmem
+    state: absent
+
+- name: sysctl | SET net.ipv4.udp_wmem_min
+  sysctl:
+    name: net.ipv4.udp_wmem_min
+    state: absent
+
+- name: sysctl | SET net.ipv4.tcp_max_tw_buckets
+  sysctl:
+    name: net.ipv4.tcp_max_tw_buckets
+    state: absent
+
+- name: sysctl | SET net.ipv4.tcp_tw_recycle
+  sysctl:
+    name: net.ipv4.tcp_tw_recycle
+    state: absent
+
+- name: sysctl | SET net.ipv4.tcp_tw_reuse
+  sysctl:
+    name: net.ipv4.tcp_tw_reuse
+    state: absent
