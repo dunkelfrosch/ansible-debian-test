@@ -12,6 +12,7 @@ RUN set -x \
 		python-setuptools \
 		sudo \
 		kmod \
+		systemd \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& apt-get purge -y --autoremove
 
@@ -29,10 +30,6 @@ COPY ./ /home/cytopia/ansible
 RUN set -x \
 	&& chown -R cytopia:cytopia /home/cytopia/ansible
 
-#RUN set -x \
-#    && ln -s /lib/modules/4.9.0-6-amd64/ /lib/modules/4.9.87-linuxkit-aufs \
-#    && depmod -a
-
 # Switch to user
 USER cytopia
 
@@ -43,7 +40,6 @@ WORKDIR /home/cytopia/ansible
 RUN set -x \
 	&& mkdir roles/dummy \
 	&& sed -i'' 's/systemd-meta/dummy/g' playbook.yml
-
 
 # Randomize roles to install each time the container is build (each travis run)
 RUN set -x \
