@@ -4,6 +4,8 @@
 # INJECT REQUIRED KERNEL MODULES
 # ---------------------------------------------------------------------------------------------------------------------
 
+- set_fact: travis_check="{{ lookup('env','TRAVIS_FORCE_SYSCTL_RELOAD') }}"
+
 - name: modprobe | add ip_conntrack kernel module
   modprobe:
     name: ip_conntrack
@@ -19,7 +21,7 @@
     name: fs.file-max
     value: "{{ file_max }}"
     state: present
-    reload: false
+    reload: "{{ travis_check }}"
   become: yes
 
 # [000.1] do less swapping (1/3)
@@ -361,3 +363,4 @@
     value: "{{ tcp_tw_reuse }}"
     state: present
     reload: false
+  become: yes
