@@ -31,7 +31,7 @@ COPY ./ /home/cytopia/ansible
 RUN set -x \
 	&& chown -R cytopia:cytopia /home/cytopia/ansible
 
-# Make symbolic link to available modules
+# Create symbolic link to prevent uname-mismatch of available modules
 RUN set -x \
     && ln -s /lib/modules/4.9.0-6-amd64 /lib/modules/`uname -r`
 
