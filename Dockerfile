@@ -12,7 +12,6 @@ RUN set -x \
 		python-setuptools \
 		sudo \
 		kmod \
-		linux-headers-4.9.0-6-amd64 \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& apt-get purge -y --autoremove
 
@@ -30,9 +29,9 @@ COPY ./ /home/cytopia/ansible
 RUN set -x \
 	&& chown -R cytopia:cytopia /home/cytopia/ansible
 
-
-RUN set -x \
-    && ln -s /lib/modules/4.9.0-6-amd64/ /lib/modules/4.9.87-linuxkit-aufs
+#RUN set -x \
+#    && ln -s /lib/modules/4.9.0-6-amd64/ /lib/modules/4.9.87-linuxkit-aufs \
+#    && depmod -a
 
 # Switch to user
 USER cytopia
